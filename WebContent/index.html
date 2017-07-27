@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<head>
+    <title>第一个Jquery程序！</title>
+    <style type="text/css" >
+        .div1{background-color: red;
+        
+        }
+    </style>
+    <script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+    <!--  <script type="text/javascript" src="./js/demo1.js"></script>
+    -->
+    <script type="text/javascript">
+    $(function(){
+    	/*获取Dom对象*/
+//    	var jdom = document.getElementById("b1");
+    	/*dom对象基本用法*/
+//    	alert(jdom.name);
+    	/*将dom对象转为jquery对象*/
+//    	var jquery = $(jdom);
+    	/*jquery对象用法*/
+ //   	alert(jquery.val());
+    	
+    	/*获取JjQuery对象,ID选择器，#+id*/
+//    	var jquery1 = $('#b1');
+//    	alert(jquery1.val());
+    	/*jQuery转换为dom对象*/
+//   	var dom2 = jquery1[0];
+//    	alert(dom2.name);
+    	
+    	/*.class选择器,获取出来的是一个数组的形式，其中元素是Dom对象，如果直接使用的话，它会默认为第一个元素（dom类型）*/   
+       // var jclass = $(".class1");
+       // alert(jclass.length);
+     //   alert($(jclass[2]).val());
+     
+    	/*在给定的父元素下匹配所有的子元素,$("parent > child")*/
+    	//alert($('body > button').length);
+    	
+    	$('#b2').click(function(){
+             alert(333)
+        });
+        
+        /*属性的删除*/
+        
+        $('#b3').click(function(){
+        	var inputs = $('.class1');
+        	var i=0;
+        	for(;i<inputs.length;i++){
+        		alert(i);
+        		$(inputs[i]).removeAttr("value");
+        	}
+        		
+        });
+        
+        $('#b4').click(function(){
+        	$('#ip1').attr({value:'第一个'});
+        	alert($('#ip1').attr('value'));
+        	$('#ip2').val('222222222');
+        });  
+        
+        alert($('#d1').html());//得到 html 的代码（不进行解释）
+        alert($('#d1').text());//得到 html 内容（解释后的）
+        
+        $('#b5').click(function(){
+        	//html添加得到解释后的内容，text添加什么显示什么，不解释.
+        	$('#d2').html("<input value=第三个 type=text/> <input value=第四个 type=text/>");
+            $('#d3').text("<input value=第三个 type=text/> <input value=第四个 type=text/>");
+            
+        });
+        
+        $('#b6').click(function(){
+        	$('input').hide();
+        });
+        
+        $('#b7').click(function(){
+            $('#d2').addClass("div1");
+            
+        });
+        $('#b8').click(function(){
+            $('#d2').removeClass();
+            
+        });
+        
+        $('#b9').click(function(){
+        	$('#l1').prepend("内部前置添加---");
+        });
+        $('#b10').click(function(){
+            $('#l1').append("---内部后置添加");
+        });
+        $('#b11').click(function(){
+            $('#l1').before("外部前置添加---");
+        });
+        $('#b12').click(function(){
+            $('#l1').after("---外部后置添加");
+        });
+        
+        $('#b13').click(function(){
+            $('#d4').remove();
+        });
+        $('#b14').click(function(){
+            $('#d5').empty();
+        });
+    });
+    
+    </script>
+</head>
+<body>
+    <button id="b1" name="第一个按钮" value="按钮1">点哦</button><br>
+    <button id="b2" >点哦</button>
+    <div id="d1">
+        <input class="class1" id='ip1' value="第一个" type="text"/>
+        <input class="class1" id='ip2' value="第二个" type="text"/>
+        <input class="class1" id='ip3' value="第三个" type="text"/>
+        <button id="b3" >清空</button>
+        <button id="b4" >添加第一个</button>
+    </div>
+    <button id="b5" >添加</button>
+    <button id="b6" >隐藏</button>
+    <button id="b7" >添加CLASS</button>
+    <button id="b8" >移除CLASS</button><//br>
+    
+    <div id = "d2"></div>
+    
+    <div id = "d3"></div>
+    <button id="b9" >div内部前置添加</button>
+    <button id="b10" >div内部后置添加</button>
+    <button id="b11" >div外部前置添加</button>
+    <button id="b12" >div外部后置添加</button>
+    <button id="b13" >remove</button>
+    <button id="b14" >empty</button>
+    <div id = "d4" ></div>
+        <label id="l1" style="background-color: red;">:原始内容:</labl>
+    <div id = "d5" style="background-color: black;" value="存在">
+        div5de内容
+    </div>
+</body>
+</html>

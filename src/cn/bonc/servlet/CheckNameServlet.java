@@ -1,0 +1,48 @@
+package cn.bonc.servlet;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class CheckNameServlet
+ */
+@WebServlet("/checkname")
+public class CheckNameServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public CheckNameServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		String loginName = request.getParameter("loginName");
+		if("admin".equals(loginName)){
+		    request.setAttribute("data",false );
+		    request.getRequestDispatcher("data.jsp").forward(request,response);
+		    return ;
+		}
+		 request.setAttribute("data",true );
+         request.getRequestDispatcher("data.jsp").forward(request,response);
+         return ;
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}
